@@ -98,8 +98,8 @@ export default {
         this.videoElement.playsInline = true;
         this.videoElement.autoplay = true;
         this.videoElement.style.position = "fixed";
-        this.videoElement.style.top = "0px";
-        this.videoElement.style.left = "0%";
+        this.videoElement.style.top = "1px";
+        this.videoElement.style.left = "1px";
         this.videoElement.style.right = "0%";
         this.videoElement.style.width = "100%";
         this.videoElement.style.height = "100%";
