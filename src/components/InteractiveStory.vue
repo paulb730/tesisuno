@@ -167,7 +167,7 @@ const stopRecording = () => {
 
 const restartStory = () => {
   // 1. Reiniciar el estado del cuento
-  storyStore.resetStory();
+  storyStore.resetStoryData();
   
   // 2. Reiniciar variables locales del componente
   currentScene.value = 0;

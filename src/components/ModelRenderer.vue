@@ -1,134 +1,175 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
-import * as THREE from 'three'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import * as TWEEN from '@tweenjs/tween.js'
+import { ref, onMounted, onBeforeUnmount, watch } from "vue";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import * as TWEEN from "@tweenjs/tween.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+
+
+const clock = new THREE.Clock();
+let controls;
+
 
 const props = defineProps({
   models: {
     type: Array,
     required: true,
-    default: () => []
-  }
-})
+    default: () => [],
+  },
+});
 
 // Escena Three.js
-const scene = new THREE.Scene()
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-const loader = new GLTFLoader()
-const modelInstances = ref([])
-const animationId = ref(null)
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+const loader = new GLTFLoader();
+const modelInstances = ref([]);
+const animationId = ref(null);
+const mixers = ref([]);
 
 // Configuración inicial
 const initScene = () => {
-  camera.position.set(0, 1, 5)
-  scene.background = null
-  
+  camera.position.set(0, 1, 5);
+  scene.background = null;
+
   // Luces
-  scene.add(new THREE.AmbientLight(0xffffff, 0.6))
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8)
-  directionalLight.position.set(0, 10, 5)
-  scene.add(directionalLight)
-}
+  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  directionalLight.position.set(0, 10, 5);
+  scene.add(directionalLight);
+};
 
 // Cargar modelos
 const loadModels = async () => {
   // Limpiar modelos anteriores
-  modelInstances.value.forEach(model => {
-    scene.remove(model)
-    model.traverse(child => {
+  modelInstances.value.forEach((model) => {
+    scene.remove(model);
+    model.traverse((child) => {
       if (child.isMesh) {
-        child.geometry?.dispose()
-        child.material?.dispose()
+        child.geometry?.dispose();
+        child.material?.dispose();
       }
-    })
-  })
-  modelInstances.value = []
-  
+    });
+  });
+  modelInstances.value = [];
+
   // Cargar nuevos modelos
   if (props.models?.length) {
-    console.log('Cargando modelos:', props.models) // Debug
-    
-    const loadingPromises = props.models.map(modelData => 
-      new Promise(resolve => {
-        loader.load(
-          modelData.path,
-          gltf => {
-            console.log('Modelo cargado:', modelData.path) // Debug
-            const model = gltf.scene
-            model.position.set(...modelData.pos)
-            model.scale.set(modelData.scale, modelData.scale, modelData.scale)
-            scene.add(model)
-            modelInstances.value.push(model)
-            resolve(model)
-          },
-          undefined,
-          error => {
-            console.error('Error cargando modelo:', modelData.path, error)
-            resolve(null)
-          }
-        )
-      })
-    )
-    
-    await Promise.all(loadingPromises)
+    console.log("Cargando modelos:", props.models); // Debug
+
+    const loadingPromises = props.models.map(
+      (modelData) =>
+        new Promise((resolve) => {
+          loader.load(
+            modelData.path,
+            (gltf) => {
+              console.log("Modelo cargado:", modelData.path); // Debug
+              const model = gltf.scene;
+              model.position.set(...modelData.pos);
+              model.scale.set(
+                modelData.scale,
+                modelData.scale,
+                modelData.scale
+              );
+              scene.add(model);
+              modelInstances.value.push(model);
+              // Animaciones
+              if (gltf.animations && gltf.animations.length > 0) {
+                const mixer = new THREE.AnimationMixer(model);
+                gltf.animations.forEach((clip) => {
+                  mixer.clipAction(clip).play();
+                });
+                mixers.value.push(mixer);
+              }
+              resolve(model);
+            },
+            undefined,
+            (error) => {
+              console.error("Error cargando modelo:", modelData.path, error);
+              resolve(null);
+            }
+          );
+        })
+    );
+
+    await Promise.all(loadingPromises);
   }
-}
+};
 
 // Bucle de animación
 const animate = () => {
-  animationId.value = requestAnimationFrame(animate)
-  TWEEN.update()
-  renderer.render(scene, camera)
-}
+  animationId.value = requestAnimationFrame(animate);
+
+  const delta = clock.getDelta();
+
+  mixers.value.forEach((mixer) => {
+    mixer.update(delta);
+  });
+  controls?.update();
+  TWEEN.update();
+  renderer.render(scene, camera);
+};
+
 
 // Lifecycle hooks
 onMounted(() => {
-  const canvas = document.getElementById('model-container')
+  const canvas = document.getElementById("model-container");
   if (canvas) {
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight)
-    canvas.appendChild(renderer.domElement)
-    initScene()
-    animate()
-    loadModels()
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    canvas.appendChild(renderer.domElement);
+    initScene();
+    controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // suaviza el movimiento
+    controls.dampingFactor = 0.05;
+    controls.screenSpacePanning = false;
+    controls.minDistance = 1;
+    controls.maxDistance = 20;
+    controls.target.set(0, 1, 0); // punto hacia donde se apunta la cámara
+    controls.update();
+    animate();
+    loadModels();
   }
-})
+});
 
 onBeforeUnmount(() => {
-  if (animationId.value) cancelAnimationFrame(animationId.value)
-  
+  if (animationId.value) cancelAnimationFrame(animationId.value);
+
   // Limpieza de modelos
-  modelInstances.value.forEach(model => {
-    scene.remove(model)
-    model.traverse(child => {
+  modelInstances.value.forEach((model) => {
+    scene.remove(model);
+    model.traverse((child) => {
       if (child.isMesh) {
-        child.geometry?.dispose()
-        child.material?.dispose()
+        child.geometry?.dispose();
+        child.material?.dispose();
       }
-    })
-  })
-  
+    });
+  });
+
   if (renderer.domElement.parentNode) {
-    renderer.domElement.parentNode.removeChild(renderer.domElement)
+    renderer.domElement.parentNode.removeChild(renderer.domElement);
   }
-  renderer.dispose()
-})
+  renderer.dispose();
+});
 
 // Observador de cambios en los modelos
-watch(() => props.models, loadModels, { deep: true })
+watch(() => props.models, loadModels, { deep: true });
 
 // Manejo de redimensionamiento
 const handleResize = () => {
-  const canvas = document.getElementById('model-container')
+  const canvas = document.getElementById("model-container");
   if (canvas) {
-    camera.aspect = canvas.clientWidth / canvas.clientHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight)
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   }
-}
+};
 
-window.addEventListener('resize', handleResize)
+window.addEventListener("resize", handleResize);
 </script>
 
 <template>

@@ -11,24 +11,24 @@ export const useStoryStore = defineStore('story', {
         storyPages: [
             {
                 text: "Había una vez tres cerditos que vivían en el bosque.",
-                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [-1, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [0, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_mayor.glb', pos: [1, 0, 0], scale: 0.55 }
+                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor_walk.glb', pos: [-1, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_medio_walk.glb', pos: [0, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_mayor_walk.glb', pos: [1, 0, 0], scale: 0.55 }
                 ],
                 audio: AUDIO_BASE_PATH + "page1_narrador.mp3"
             },
             {
                 text: "Los tres eran hermanos y muy diferentes entre sí.",
-                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [-1, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [0, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_mayor.glb', pos: [1, 0, 0], scale: 0.55 }
+                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor_walk.glb', pos: [-1, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_medio_walk.glb', pos: [0, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_mayor_walk.glb', pos: [1, 0, 0], scale: 0.55 }
                 ],
                 audio: AUDIO_BASE_PATH + "page2_narrador.mp3"
             },
             {
                 text: "Los dos cerditos más pequeños pasaban todo el día jugando y tocando sus instrumentos",
-                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [-1, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [0, 0, 0], scale: 0.5 }
+                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor_walk.glb', pos: [-1, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_medio_walk.glb', pos: [0, 0, 0], scale: 0.5 }
                 ],
                 audio: AUDIO_BASE_PATH + "page3_narrador.mp3"
             },
@@ -41,25 +41,25 @@ export const useStoryStore = defineStore('story', {
             },
             {
                 text: "Un día, el hermano mayor, preocupado porque sus dos hermanitos todo el día jugaban y cantaban, los llamó y les dijo:",
-                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [-1, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [0, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_mayor.glb', pos: [1, 0, 0], scale: 0.55 }
+                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor_walk.glb', pos: [-1, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_medio_walk.glb', pos: [0, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_mayor_walk.glb', pos: [1, 0, 0], scale: 0.55 }
                 ],
                 audio: AUDIO_BASE_PATH + "page5_narrador.mp3"
             },
             {
                 text: "Pronto llegará el invierno y habrá mucha nieve ¿Qué harán entonces? Les aconsejo que construyan una casa donde puedan vivir.",
-                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [-1, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [0, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_mayor.glb', pos: [1, 0, 0], scale: 0.55 }
+                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor_walk.glb', pos: [-1, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_medio_walk.glb', pos: [0, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_mayor_walk.glb', pos: [1, 0, 0], scale: 0.55 }
                 ],
                 audio: AUDIO_BASE_PATH + "page6_cerdito_mayor.mp3"
             },
             {
                 text: "“Es verdad”, respondieron los dos cerditos.",
-                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [-1, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [0, 0, 0], scale: 0.5 },
-                { path: MODEL_BASE_PATH + 'cerdito_mayor.glb', pos: [1, 0, 0], scale: 0.55 }
+                models: [{ path: MODEL_BASE_PATH + 'cerdito_menor_walk.glb', pos: [-1, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_medio_walk.glb', pos: [0, 0, 0], scale: 0.5 },
+                { path: MODEL_BASE_PATH + 'cerdito_mayor_walk.glb', pos: [1, 0, 0], scale: 0.55 }
                 ],
                 audio: AUDIO_BASE_PATH + "page7_narrador.mp3"
             },
@@ -90,15 +90,15 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "Un día, paseaba por el bosque el lobo y de repente vio al cerdito más pequeño e intentó atraparlo.",
                 models: [
-                    { path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [1, 0, 0], scale: 0.5 },
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 }
+                    { path: MODEL_BASE_PATH + 'cerdito_menor_run.glb', pos: [1, 0, 0], scale: 0.5 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 }
                 ],
                 audio: AUDIO_BASE_PATH + "page11_narrador.mp3"
             },
             {
                 text: "El cerdito huyó despavorido al ver al lobo y se metió en su casa de paja. Estaba muerto de miedo y le temblaban las piernas.",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_paja.glb', pos: [0, 0.8, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page12_narrador.mp3"
@@ -106,7 +106,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "El lobo, al ver que la casa era de paja, dijo riéndose:",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_paja.glb', pos: [0, 0.8, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page13_narrador.mp3"
@@ -114,7 +114,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "¡Pero si es de paja! ¡Pues, soplaré y soplaré y la casa derribaré!",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_paja.glb', pos: [0, 0.8, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page14_lobo.mp3"
@@ -123,7 +123,7 @@ export const useStoryStore = defineStore('story', {
                 text: "¡Vaya que sí la derribó!",
                 models: [
                     { path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [1, 0, 0], scale: 0.5 },
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_paja.glb', pos: [0, 0.8, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page15_narrador.mp3"
@@ -133,7 +133,7 @@ export const useStoryStore = defineStore('story', {
                 models: [
                     { path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [1, 0, 0], scale: 0.5 },
                     { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [1.5, 0, 0], scale: 0.5 },
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_madera.glb', pos: [0, 0.8, 0], scale: 1.5 }
                 ],
                 audio: AUDIO_BASE_PATH + "page16_narrador.mp3"
@@ -141,7 +141,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "El lobo, al ver que la casa era de madera, dijo riéndose:",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_madera.glb', pos: [0, 0.8, 0], scale: 1.5 },
                 ],
                 audio: AUDIO_BASE_PATH + "page17_narrador.mp3"
@@ -149,7 +149,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "¡Pero si es de madera! ¡Pues, soplaré, soplaré y la casa derribaré!",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_madera.glb', pos: [0, 0.8, 0], scale: 1.5 }
                 ],
                 audio: AUDIO_BASE_PATH + "page18_lobo.mp3"
@@ -157,7 +157,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "Al primer intento, el lobo no consiguió derribar la casa, pero al segundo, la tumbó.",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_madera.glb', pos: [0, 0.8, 0], scale: 1.5 },
                 ],
                 audio: AUDIO_BASE_PATH + "page19_narrador.mp3"
@@ -168,7 +168,7 @@ export const useStoryStore = defineStore('story', {
                     // { path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [1, 0, 0], scale: 0.5 },
                     // { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [1.5, 0, 0], scale: 0.5 },
                     // { path: MODEL_BASE_PATH + 'cerdito_mayor.glb', pos: [-1, 0, 0], scale: 0.5 },
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page20_narrador.mp3"
@@ -176,7 +176,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "El lobo, al ver la casa, sonrío de nuevo y dijo:",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page21_narrador.mp3"
@@ -184,7 +184,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "¡Soplaré y soplaré y la casa derribaré!",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page22_lobo.mp3"
@@ -192,7 +192,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "Al primer intento, el lobo no consiguió derribar la casa, al segundo intento tampoco lo consiguió, y al tercer intento, se cansó.",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page23_narrador.mp3"
@@ -200,7 +200,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "Dentro de la casa, los tres cerditos sonreían despreocupados. El lobo, enfadado, viendo la casa dijo:",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page24_narrador.mp3"
@@ -208,7 +208,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "¡Ya está! ¡Lo tengo! Entraré por la chimenea.",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page25_lobo.mp3"
@@ -216,7 +216,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "El lobo trepó por la chimenea y los dos cerditos más pequeños sintieron mucho miedo al escuchar el ruido, pero el hermano mayor les dijo:",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page26_narrador.mp3"
@@ -224,7 +224,7 @@ export const useStoryStore = defineStore('story', {
             {
                 text: "Tranquilos, no se preocupen que enseguida haré una hoguera para que el lobo se queme cuando baje por la chimenea.",
                 models: [
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page27_cerdito_mayor.mp3"
@@ -235,7 +235,7 @@ export const useStoryStore = defineStore('story', {
                     { path: MODEL_BASE_PATH + 'cerdito_menor.glb', pos: [1, 0, 2], scale: 0.5 },
                     { path: MODEL_BASE_PATH + 'cerdito_medio.glb', pos: [1.5, 0, 2], scale: 0.5 },
                     { path: MODEL_BASE_PATH + 'cerdito_mayor.glb', pos: [-1, 0, 2], scale: 0.55 },
-                    { path: MODEL_BASE_PATH + 'lobo_feroz.glb', pos: [2.5, 0.5, 0], scale: 1 },
+                    { path: MODEL_BASE_PATH + 'lobo_feroz_angry.glb', pos: [2.5, 0.5, 0], scale: 1 },
                     { path: MODEL_BASE_PATH + 'casa_cemento.glb', pos: [0, 1, 0], scale: 1.8 }
                 ],
                 audio: AUDIO_BASE_PATH + "page28_narrador.mp3"
